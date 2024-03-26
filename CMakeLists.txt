@@ -6,6 +6,8 @@ link_directories(./lib)
 
 set(SOURCE src/main.cpp)
 
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ./../bin)
+
 add_executable(${PROJECT_NAME} ${SOURCE})
 
 target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-system sfml-window)
