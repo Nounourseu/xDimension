@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/rapha/Documents/Projets/xDimension/build",
+  "command": "C:\\PROGRA~1\\mingw64\\bin\\G__~1.EXE  @CMakeFiles/xDim.dir/includes_CXX.rsp -g -o CMakeFiles\\xDim.dir\\src\\main.cpp.obj -c C:\\Users\\rapha\\Documents\\Projets\\xDimension\\src\\main.cpp",
+  "file": "C:/Users/rapha/Documents/Projets/xDimension/src/main.cpp",
+  "output": "CMakeFiles/xDim.dir/src/main.cpp.obj"
+}
+]
