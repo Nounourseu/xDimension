@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
 project(xDim)
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
-link_directories(${PROJECT_SOURCE_DIR}/lib)
+include_directories(./include)
+link_directories(./lib)
 
 set(SOURCE src/main.cpp)
 
