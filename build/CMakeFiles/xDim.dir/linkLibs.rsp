@@ -1,1 +1,0 @@
-  -LC:/Users/rapha/Documents/Projets/xDimension/./lib  -lsfml-graphics -lsfml-system -lsfml-window -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
