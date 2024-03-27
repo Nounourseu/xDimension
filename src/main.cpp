@@ -21,10 +21,18 @@ private:
 };
 
 
+
+
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML works!");
-    Point point(400, 400, 5, sf::Color::Red);
+    sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
+
+    int width = window.getSize().x;
+    int height = window.getSize().y;
+
+
+    // Point rouge au centre
+    Point point(width/2, height/2, 5, sf::Color::Red);
 
     while (window.isOpen())
     {
