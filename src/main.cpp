@@ -2,9 +2,9 @@
 #include <iostream>
 
 // J'ai fait la class ici pcq j'arrive pas à include SFML dans Point.hpp
-class Point {
+class MainPoint {
 public:
-    Point(int x, int y, int size, sf::Color color = sf::Color::White) : position(x, y), color(color) {
+    MainPoint(int x, int y, int size, sf::Color color = sf::Color::White) : position(x, y), color(color) {
         rectangle.setSize(sf::Vector2f(size, size));
         rectangle.setFillColor(color);
         rectangle.setPosition(position.x - size/2, position.y - size/2); // Rectangle centred arround the point
@@ -23,8 +23,13 @@ private:
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML works!");
-    Point point(400, 400, 5, sf::Color::Red);
+    sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
+
+    int width = window.getSize().x;
+    int height = window.getSize().y;
+
+    // Point rouge au centre
+    MainPoint point(width/2, height/2, 3, sf::Color::Red);
 
     while (window.isOpen())
     {
