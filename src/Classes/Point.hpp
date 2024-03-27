@@ -1,24 +1,23 @@
 #ifndef POINT_HPP
 #define POINT_HPP
 
-#include <SFML/Graphics.hpp> 
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include "Shape.hpp"
 
-class Point {
+class Point : public Shape{
 public:
-    Point(int x, int y, int size, sf::Color color = sf::Color::White) : position(x, y), color(color) {
-        rectangle.setSize(sf::Vector2f(size, size));
-        rectangle.setFillColor(color);
-        rectangle.setPosition(position.x - size/2, position.y - size/2); // Rectangle centred arround the point
-    }
+    Point(std::vector<float> pos, sf::Color color = sf::Color::White);
+    ~Point();
 
-    void draw(sf::RenderWindow& window) const {
-        window.draw(rectangle);
-    }
+    void draw(sf::RenderWindow& window);
+    sf::Vector2i get2D();
 
 private:
-    sf::Vector2i position;
-    sf::Color color;
-    sf::RectangleShape rectangle;
+    std::vector<float> m_pos = {};
+    int m_dim;
+    sf::Color m_color;
+    sf::Vertex m_repr;
 };
 
 #endif 

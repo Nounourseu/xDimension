@@ -6,7 +6,7 @@ link_directories(./lib)
 
 set(SOURCE src/main.cpp)
 
-file(GLOB_RECURSE SOURCES "/Classes/*.cpp")
+file(GLOB_RECURSE SOURCES "./src/Classes/*.cpp")
 
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ./../bin)
 
