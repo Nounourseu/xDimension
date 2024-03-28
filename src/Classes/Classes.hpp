@@ -2,5 +2,8 @@
 #include "Point.hpp"
 #include "Segment.hpp"
 #include "UI/Shape.hpp"
+#include "UI/Button.hpp"
+#include "UI/UI.hpp"
+#include "UI/Rectangle.hpp"
 #include "TestPoint.hpp"
 #include "UI/Rectangle.hpp"

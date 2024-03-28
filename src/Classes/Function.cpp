@@ -12,8 +12,8 @@ Function::Function(std::string expression){
     int parenthesis_level = 0;
     std::string left_expr = "";
     std::string right_expr = "";
-    bool operator_passed = false;
-    int operator_level = NULL;
+    int operator_level = INT_MAX;
+    m_operation = Null;
     for (int i = 0; i < expression.size(); i++){
         if (expression[i] == '('){
             parenthesis_level ++;
@@ -22,7 +22,43 @@ Function::Function(std::string expression){
         {
             parenthesis_level --;
         }
-
+        else if (expression[i] == '+')
+        {
+            if (parenthesis_level < operator_level){
+                left_expr += right_expr;
+                right_expr = "";
+                operator_level = parenthesis_level;
+                m_operation = Addition;
+            }
+        }
+        else if (expression[i] == '-')
+        {
+            if (parenthesis_level < operator_level){
+                left_expr += right_expr;
+                right_expr = "";
+                operator_level = parenthesis_level;
+                m_operation = Substraction;
+            }
+        }
+        else if (expression[i] == '*')
+        {
+            if (parenthesis_level < operator_level){
+                left_expr += right_expr;
+                right_expr = "";
+                operator_level = parenthesis_level;
+                m_operation = Multiplication;
+            }
+        }
+        else if (expression[i] == '/')
+        {
+            if (parenthesis_level < operator_level){
+                left_expr += right_expr;
+                right_expr = "";
+                operator_level = parenthesis_level;
+                m_operation = Division;
+            }
+        }
+        right_expr += expression[i];
     }
 }
 
