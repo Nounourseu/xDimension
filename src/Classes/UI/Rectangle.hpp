@@ -12,15 +12,16 @@ Plusieurs éléments différents dans un tableau.
 
 class Rectangle: public Shape{
 public :
-    Rectangle(int width, int height, int x, int y, sf::Color color);
+    Rectangle(int width, int height, int x, int y, sf::Color color, int outline);
     ~Rectangle();
-    sf::Vector2i position;
-    sf::Color color;
-    void draw();
+    sf::Vector2i m_position;
+    sf::Color m_color;
+    sf::Color m_OUTcolor;
+    int m_outline;
+    void draw(sf::RenderWindow& window);
 
 protected:
-    int width;
-    int height;
+    sf::Vector2f m_size;
 };
 
 #endif

@@ -3,3 +3,4 @@
 #include "Segment.hpp"
 #include "UI/Shape.hpp"
 #include "TestPoint.hpp"
+#include "UI/Rectangle.hpp"

@@ -13,6 +13,9 @@ int main()
     // Point rouge au centre
     TestPoint point(width/2, height/2, 3, sf::Color::Red);
 
+    // Rectangle bleu
+    Rectangle rect(100, 200, 300, 300, sf::Color(50,50,50), 10);
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -24,6 +27,7 @@ int main()
 
         window.clear();
         point.draw(window);
+        rect.draw(window);
         window.display();
     }
 
