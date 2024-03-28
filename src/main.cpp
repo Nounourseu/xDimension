@@ -2,6 +2,7 @@
 #include <iostream>
 
 // J'ai fait la class ici pcq j'arrive pas à include SFML dans Point.hpp
+
 class MainPoint {
 public:
     MainPoint(int x, int y, int size, sf::Color color = sf::Color::White) : position(x, y), color(color) {

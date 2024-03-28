@@ -13,7 +13,7 @@ public:
     void draw(sf::RenderWindow& window);
     sf::Vector2i get2D();
 
-private:
+protected :
     std::vector<float> m_pos = {};
     int m_dim;
     sf::Color m_color;
