@@ -13,8 +13,8 @@ int main()
     // Point rouge au centre
     TestPoint point(width/2, height/2, 3, sf::Color::Red);
 
-    // Rectangle bleu
-    Rectangle rect(100, 200, 300, 300, sf::Color(255,250,250), 10);
+    // Rectangle
+    Rectangle rect(100, 200, 300, 300, sf::Color(0,0,250), 10);
 
     while (window.isOpen())
     {

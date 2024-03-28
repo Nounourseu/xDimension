@@ -16,10 +16,16 @@ Rectangle::~Rectangle(){
 }
 
 sf::Color Rectangle::getOutColor(sf::Color color){
+    int change = 30;
+    int rgb[] = {color.r, color.g, color.b};
+    for (int i=0; i<3; i++) {
+        if (rgb[i]<change) {rgb[i] = 0;}
+        else {rgb[i] -= change;}
+    }
     return sf::Color(
-        static_cast<sf::Uint8>(color.r * 1.2),
-        static_cast<sf::Uint8>(color.g * 1.2),
-        static_cast<sf::Uint8>(color.b * 1.2)
+        static_cast<sf::Uint8>(rgb[0]),
+        static_cast<sf::Uint8>(rgb[1]),
+        static_cast<sf::Uint8>(rgb[2])
     );
 }
 
