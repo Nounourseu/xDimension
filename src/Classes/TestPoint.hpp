@@ -2,8 +2,6 @@
 #define TESTPOINT_HPP
 
 #include <SFML/Graphics.hpp>
-#include <vector>
-#include "Shape.hpp"
 
 class TestPoint {
 public:

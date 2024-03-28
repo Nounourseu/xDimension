@@ -12,7 +12,7 @@ int main()
 
     // Point rouge au centre
     TestPoint point(width/2, height/2, 3, sf::Color::Red);
-    
+
     while (window.isOpen())
     {
         sf::Event event;
