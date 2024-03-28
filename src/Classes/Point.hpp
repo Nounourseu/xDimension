@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "Shape.hpp"
+#include "UI/Shape.hpp"
 
 class Point : public Shape{
 public:

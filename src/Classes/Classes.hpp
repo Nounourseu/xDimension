@@ -1,5 +1,5 @@
 #include "Function.hpp"
 #include "Point.hpp"
 #include "Segment.hpp"
-#include "Shape.hpp"
+#include "UI/Shape.hpp"
 #include "TestPoint.hpp"
