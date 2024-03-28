@@ -2,19 +2,27 @@
 #define BUTTON_HPP
 
 #include <SFML/Graphics.hpp>
+#include "Rectangle.hpp"
+#include "Label.hpp"
 
 class Button {
     public:
-        Button(int size,  int x, int y,  char text[20], void (*m_onclick)(), sf::Color color);
+        Button(int width, int height, int x, int y, const char text[], void (*m_onclick)(), sf::Color color);
         ~Button();
-        sf::Vector2i position;
         void (*m_onclick)();
+        void draw(sf::RenderWindow& window);
     
     protected:
-        int size;
+        sf::Vector2i size;
+        sf::Vector2i position;
         char text[20];
-        sf::Color color;
-        
+        sf::Color color;  
+        sf::Color calculateTextColor(sf::Color);
+        int centerTxt(int x, int width, int height, int len);
+
+        // Homemade objects
+        Rectangle rect;   
+        Label label;   
 };
 
 #endif

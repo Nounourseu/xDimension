@@ -1,7 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <stdio.h>
 #include "Classes/Classes.hpp"
 
+void testDoNothing() {
+    printf("Clicked");
+}
 
 int main()
 {
@@ -15,6 +19,17 @@ int main()
 
     // Rectangle
     Rectangle rect(100, 200, 300, 300, sf::Color(0,0,250), 10);
+
+    // Label
+    Label lab("HelloW", 40, 700, 100, sf::Color::White);
+
+    // Bouton 
+    Button but(100, 40, 600, 700, "Appuie stp", testDoNothing, sf::Color(0,0,250));
+    Button but1(200, 40, 600, 650, "Appuie stp", testDoNothing, sf::Color(0,0,250));
+    Button but2(400, 40, 600, 600, "Appuie stp", testDoNothing, sf::Color(0,0,250));
+    Button but3(600, 40, 600, 550, "Appuie stp", testDoNothing, sf::Color(0,0,250));
+    Button but4(800, 40, 600, 500, "Appuie stp", testDoNothing, sf::Color(0,0,250));
+    Button but5(1000, 40, 600, 400, "Appuie stp", testDoNothing, sf::Color(0,0,250));
 
     while (window.isOpen())
     {
@@ -33,6 +48,15 @@ int main()
         window.clear();
         point.draw(window);
         rect.draw(window);
+        lab.draw(window);
+
+        but.draw(window);
+        but1.draw(window);
+        but2.draw(window);
+        but3.draw(window);
+        but4.draw(window);
+        but5.draw(window);
+
         window.display();
     }
 

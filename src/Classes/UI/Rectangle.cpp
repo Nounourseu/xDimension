@@ -32,9 +32,9 @@ sf::Color Rectangle::getOutColor(sf::Color color){
 
 void Rectangle::setColor(sf::Color color){
     sf::Color OUTcolor = this->getOutColor(color);
-    std::cout << "R: " << static_cast<int>(OUTcolor.r) << std::endl;
-    std::cout << "G: " << static_cast<int>(OUTcolor.g) << std::endl;
-    std::cout << "B: " << static_cast<int>(OUTcolor.b) << std::endl;
+    // std::cout << "R: " << static_cast<int>(OUTcolor.r) << std::endl;
+    // std::cout << "G: " << static_cast<int>(OUTcolor.g) << std::endl;
+    // std::cout << "B: " << static_cast<int>(OUTcolor.b) << std::endl;
 
     m_rectangle.setOutlineColor(OUTcolor);
     m_rectangle.setFillColor(color);
