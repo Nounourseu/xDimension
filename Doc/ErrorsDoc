@@ -1,4 +1,5 @@
 Code : desc
 
 1000 : Fonction non codée
+1100 : Exception qui sera prochainement gérée.
 9000 : Fonction virtuelle appelée
