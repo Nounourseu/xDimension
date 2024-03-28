@@ -1,7 +1,6 @@
 #ifndef UI_HPP
 #define UI_HPP
 #include "Button.hpp"
-
 #include <SFML/Graphics.hpp>
 
 class UI {
