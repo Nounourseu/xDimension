@@ -5,7 +5,7 @@
 #include <vector>
 
 enum Operations {
-    Addition, Substraction, Multiplication, Division, Log, Exponential, Power, Null
+    Addition, Substraction, Multiplication, Division, Log, Exponential, Power, Constant, Variable, Null
 };
 
 class Function {
@@ -18,6 +18,7 @@ public :
 
 protected :
     int m_dimension;
+    int m_value;
     Function *m_left_member;
     Function *m_right_member;
     Operations m_operation;

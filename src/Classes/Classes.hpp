@@ -2,3 +2,4 @@
 #include "Point.hpp"
 #include "Segment.hpp"
 #include "Shape.hpp"
+#include "TestPoint.hpp"
