@@ -2,12 +2,10 @@
 #define TESTPOINT_HPP
 
 #include <SFML/Graphics.hpp>
-#include <vector>
-#include "Shape.hpp"
 
 class TestPoint {
 public:
-    TestPoint(int x, int y, int size, sf::Color color = sf::Color::White);
+    TestPoint(int x, int y, int size, sf::Color color);
     ~TestPoint();
     void draw(sf::RenderWindow& window);
 

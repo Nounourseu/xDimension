@@ -1,25 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
-// J'ai fait la class ici pcq j'arrive pas à include SFML dans Point.hpp
-
-class MainPoint {
-public:
-    MainPoint(int x, int y, int size, sf::Color color = sf::Color::White) : position(x, y), color(color) {
-        rectangle.setSize(sf::Vector2f(size, size));
-        rectangle.setFillColor(color);
-        rectangle.setPosition(position.x - size/2, position.y - size/2); // Rectangle centred arround the point
-    }
-
-    void draw(sf::RenderWindow& window) const {
-        window.draw(rectangle);
-    }
-
-private:
-    sf::Vector2i position;
-    sf::Color color;
-    sf::RectangleShape rectangle;
-};
+#include "Classes/Classes.hpp"
 
 
 int main()
@@ -30,7 +11,7 @@ int main()
     int height = window.getSize().y;
 
     // Point rouge au centre
-    MainPoint point(width/2, height/2, 3, sf::Color::Red);
+    TestPoint point(width/2, height/2, 3, sf::Color::Red);
 
     while (window.isOpen())
     {
