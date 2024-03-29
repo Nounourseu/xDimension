@@ -6,8 +6,9 @@
 Button::Button(int width, int height, int x, int y, const char text[], void (*m_onclick)(), sf::Color color)
     : size(width, height), position(x, y), color(color),
       rect(width, height, x, y, color, 5),
-      label(text, height*0.6, centerTxt(x, width, height, strlen(text)), y, calculateTextColor(color))
+      label(text, height/2, x, y, calculateTextColor(color))
        {
+        label.changePos((width-label.getWidth())/2 + x, (height-label.getHeight())/2 + y);
 }
 
 Button::~Button() {}
@@ -23,7 +24,4 @@ sf::Color Button::calculateTextColor(sf::Color backgroundColor) {
     return (luminance < 1280) ? sf::Color::White : sf::Color::Black;
 }
 
-int Button::centerTxt(int x, int width, int height, int len) {
-    return x + (width-height/2*len)/2;
-}
 

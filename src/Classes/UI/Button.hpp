@@ -18,7 +18,6 @@ class Button {
         char text[20];
         sf::Color color;  
         sf::Color calculateTextColor(sf::Color);
-        int centerTxt(int x, int width, int height, int len);
 
         // Homemade objects
         Rectangle rect;   
