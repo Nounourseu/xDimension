@@ -31,6 +31,9 @@ int main()
     Button but4(800, 40, 600, 500, "Appuie stp", testDoNothing, sf::Color(0,0,250));
     Button but5(1000, 40, 600, 400, "Appuie stp", testDoNothing, sf::Color(0,0,250));
 
+    // Segment
+    Segment seg(0,0, 1920, 1080, 3);
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -56,6 +59,8 @@ int main()
         but3.draw(window);
         but4.draw(window);
         but5.draw(window);
+
+        seg.draw(window);
 
         window.display();
     }
