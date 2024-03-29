@@ -18,7 +18,7 @@ int main()
     TestPoint point(width/2, height/2, 3, sf::Color::Red);
 
     // Rectangle
-    Rectangle rect(100, 200, 300, 300, sf::Color(0,0,250), 10);
+    Rectangle rect(100, 200, 300, 300, sf::Color(0,150,0), 10);
 
     // Label
     Label lab("HelloW", 40, 700, 100, sf::Color::White);
@@ -32,7 +32,9 @@ int main()
     Button but5(1000, 40, 600, 400, "Appuie stp", testDoNothing, sf::Color(0,0,250));
 
     // Segment
-    Segment seg(0,0, 1920, 1080);
+    Segment diag(100,200, 600, 100, sf::Color::Red);
+    Segment xAxis(0,height/2, 1920, height/2);
+    Segment yAxis(width/2, 0, width/2, 1080);
 
     while (window.isOpen())
     {
@@ -60,7 +62,9 @@ int main()
         but4.draw(window);
         but5.draw(window);
 
-        seg.draw(window);
+        diag.draw(window);
+        xAxis.draw(window);
+        yAxis.draw(window);
 
         window.display();
     }
