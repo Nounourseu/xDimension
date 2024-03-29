@@ -32,7 +32,7 @@ int main()
     Button but5(1000, 40, 600, 400, "Appuie stp", testDoNothing, sf::Color(0,0,250));
 
     // Segment
-    Segment seg(0,0, 1920, 1080, 3);
+    Segment seg(0,0, 1920, 1080);
 
     while (window.isOpen())
     {

@@ -1,8 +1,8 @@
 #include "Segment.hpp"
 #include <SFML/Graphics.hpp>
 
-Segment::Segment(int xA, int yA, int xB, int yB, unsigned int thickness)
-    : start(xA, yA), end(xB, yB), m_thickness(thickness) 
+Segment::Segment(int xA, int yA, int xB, int yB)
+    : start(xA, yA), end(xB, yB) 
     {}
 
 void Segment::draw(sf::RenderWindow& window) const {
@@ -11,5 +11,5 @@ void Segment::draw(sf::RenderWindow& window) const {
         sf::Vertex(end, sf::Color::White)
     };
 
-    window.draw(line, m_thickness, sf::Lines);
+    window.draw(line, 2, sf::Lines);
 }

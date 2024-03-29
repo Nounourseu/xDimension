@@ -5,7 +5,7 @@
 
 class Segment {
 public:
-    Segment(int xA, int yA, int xB, int yB, unsigned int thickness = 2);
+    Segment(int xA, int yA, int xB, int yB);
 
     void draw(sf::RenderWindow& window) const;
 
