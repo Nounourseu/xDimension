@@ -11,13 +11,16 @@ class Button {
         ~Button();
         void (*m_onclick)();
         void draw(sf::RenderWindow& window);
+        sf::Vector2i getPos();
+
     
     protected:
         sf::Vector2i size;
-        sf::Vector2i position;
+        sf::Vector2i m_position;
         char text[20];
         sf::Color color;  
         sf::Color calculateTextColor(sf::Color);
+        sf::Vector2i cursor;
 
         // Homemade objects
         Rectangle rect;   

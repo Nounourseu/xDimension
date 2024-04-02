@@ -7,9 +7,15 @@ void testDoNothing() {
     printf("Clicked");
 }
 
+float testFunc(float x) {
+    // y = x^2 + 3
+    return x*x+3;
+    }
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
+
 
     int width = window.getSize().x;
     int height = window.getSize().y;
@@ -30,11 +36,19 @@ int main()
     Button but3(600, 40, 600, 550, "Appuie stp", testDoNothing, sf::Color(0,0,250));
     Button but4(800, 40, 600, 500, "Appuie stp", testDoNothing, sf::Color(0,0,250));
     Button but5(1000, 40, 600, 400, "Appuie stp", testDoNothing, sf::Color(0,0,250));
+    unsigned int button_instances = 6;
 
     // Segment
     Segment diag(100,200, 600, 100, sf::Color::Red);
-    Segment xAxis(0,height/2, 1920, height/2);
-    Segment yAxis(width/2, 0, width/2, 1080);
+
+
+    TestPoint graph[1920];
+
+    std::pair<float, float> xdef = std::make_pair(-10.0f, 10.0f);
+    std::pair<float, float> ydef = std::make_pair(-10.0f, 10.0f);
+
+    Draw2D fonc_test(xdef, ydef, &testFunc, &window);
+
 
     while (window.isOpen())
     {
@@ -48,9 +62,17 @@ int main()
                     window.close();
                 }
             }
+            if (event.type == sf::Event::MouseLeft) {
+                int mouseX = sf::Mouse::getPosition().x;
+                int mouseY = sf::Mouse::getPosition().y;
+                for (int i=0; i<button_instances; i++) {
+                    // je cherche un moyen d'avoir toutes les instances de Button
+                } 
+            }
         }
 
         window.clear();
+
         point.draw(window);
         rect.draw(window);
         lab.draw(window);
@@ -63,8 +85,8 @@ int main()
         but5.draw(window);
 
         diag.draw(window);
-        xAxis.draw(window);
-        yAxis.draw(window);
+
+        fonc_test.draw();
 
         window.display();
     }

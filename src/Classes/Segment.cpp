@@ -4,6 +4,7 @@
 Segment::Segment(int xA, int yA, int xB, int yB, sf::Color color)
     : start(xA, yA), end(xB, yB), m_color(color)
     {}
+Segment::~Segment() {}
 
 void Segment::draw(sf::RenderWindow& window) const {
     sf::Vertex line[] = {

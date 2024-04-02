@@ -4,7 +4,7 @@
 #include "Label.hpp"
 
 Button::Button(int width, int height, int x, int y, const char text[], void (*m_onclick)(), sf::Color color)
-    : size(width, height), position(x, y), color(color),
+    : size(width, height), m_position(x, y), color(color),
       rect(width, height, x, y, color, 5),
       label(text, height/2, x, y, calculateTextColor(color))
        {
@@ -22,6 +22,10 @@ sf::Color Button::calculateTextColor(sf::Color backgroundColor) {
     // Calcul de la luminance de backgroundColor (les coefs c'est chatGPT)
     float luminance = (0.2126f * backgroundColor.r + 0.7152f * backgroundColor.g + 0.0722f * backgroundColor.b);
     return (luminance < 1280) ? sf::Color::White : sf::Color::Black;
+}
+
+sf::Vector2i Button::getPos() {
+    return m_position;
 }
 
 

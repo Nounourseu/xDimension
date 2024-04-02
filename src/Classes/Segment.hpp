@@ -6,7 +6,7 @@
 class Segment {
 public:
     Segment(int xA, int yA, int xB, int yB, sf::Color color = sf::Color::White);
-
+    ~Segment();
     void draw(sf::RenderWindow& window) const;
 
 protected:

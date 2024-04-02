@@ -2,6 +2,7 @@
 #include "Point.hpp"
 #include "Segment.hpp"
 #include "TestPoint.hpp"
+#include "Draw2D.hpp"
 #include "UI/Shape.hpp"
 #include "UI/Button.hpp"
 #include "UI/UI.hpp"
