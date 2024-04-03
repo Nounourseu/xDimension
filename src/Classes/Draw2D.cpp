@@ -12,7 +12,8 @@ Draw2D::Draw2D(std::pair<float, float>& xdef, std::pair<float, float>& ydef, flo
 
     for (int i=0; i<m_winsize.x; i++) {
         // Il y a encore un peu de maths à faire ici pour que la fonction s'affiche bien en fonction l'ensemble de definition du graphique
-        m_points[i].rebuild(i, m_winsize.y - func(i*m_pas-(m_xdef.first*0))/m_ratio, 2, m_color);
+        m_points[i].rebuild(i, m_winsize.y - func(i*m_pas+m_xdef.first)/m_ratio, 2, m_color);
+        if (i%10==0) {printf("\n%f", i*m_pas+m_xdef.first);}    
     }
 
 }
