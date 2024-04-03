@@ -12,7 +12,9 @@ Draw2D::Draw2D(std::pair<float, float>& xdef, std::pair<float, float>& ydef, flo
 
     for (int i=0; i<m_winsize.x; i++) {
         m_points[i].rebuild(i, m_winsize.y - (func(i*m_pas+m_xdef.first)-m_ydef.first)/m_ratio, 2, m_color);
-        if (i%10==0) {printf("\n%f", i*m_pas+m_xdef.first);}    
+        if (i%10==0) {
+            //printf("\n%f", i*m_pas+m_xdef.first);
+        }    
     }
 
 }

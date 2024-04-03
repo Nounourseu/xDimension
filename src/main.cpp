@@ -14,8 +14,11 @@ float testFunc(float x) {
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
+    //sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Works !");
 
+    Function test("(3*x) + y");
+    
 
     int width = window.getSize().x;
     int height = window.getSize().y;
@@ -24,7 +27,7 @@ int main()
     TestPoint point(width/2, height/2, 3, sf::Color::Red);
 
     // Rectangle
-    Rectangle rect(100, 200, 300, 300, sf::Color(0,150,0), 10);
+    Rectangle rect(100, 200, 300, 300, sf::Color(0, 150, 0), 10);
 
     // Label
     Label lab("HelloW", 40, 700, 100, sf::Color::White);
@@ -67,6 +70,8 @@ int main()
                 int mouseY = sf::Mouse::getPosition().y;
                 for (int i=0; i<button_instances; i++) {
                     // je cherche un moyen d'avoir toutes les instances de Button
+                    // Tu peux faire un vecteur dans UI qui regroupe tous les trucs affichés à l'écran. 
+                    // Comme ça tu draw tt d'un coup et t'as juste à check la liste pour voir les instances de button
                 } 
             }
         }

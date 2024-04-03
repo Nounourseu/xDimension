@@ -1,5 +1,6 @@
 #include "Function.hpp"
 #include <math.h>
+#include <iostream>
 
 Function::Function(){
     m_operation = Null;
@@ -8,7 +9,9 @@ Function::Function(){
 }
 
 //Analyseur sytaxique
-Function::Function(std::string expression){
+Function::Function(std::string expression, std::vector<std::string> *variables){
+    m_variables = variables;
+    std::cout << expression << std::endl;
     int parenthesis_level = 0;
     std::string left_expr = "";
     std::string right_expr = "";
@@ -18,12 +21,10 @@ Function::Function(std::string expression){
         if (expression[i] == '('){
             parenthesis_level ++;
         }
-        else if (expression[i] == ')')
-        {
+        else if (expression[i] == ')'){
             parenthesis_level --;
         }
-        else if (expression[i] == '+')
-        {
+        else if (expression[i] == '+'){
             if (parenthesis_level < operator_level){
                 left_expr += right_expr;
                 right_expr = "";
@@ -31,8 +32,7 @@ Function::Function(std::string expression){
                 m_operation = Addition;
             }
         }
-        else if (expression[i] == '-')
-        {
+        else if (expression[i] == '-'){
             if (parenthesis_level < operator_level){
                 left_expr += right_expr;
                 right_expr = "";
@@ -40,8 +40,7 @@ Function::Function(std::string expression){
                 m_operation = Substraction;
             }
         }
-        else if (expression[i] == '*')
-        {
+        else if (expression[i] == '*'){
             if (parenthesis_level < operator_level){
                 left_expr += right_expr;
                 right_expr = "";
@@ -49,8 +48,7 @@ Function::Function(std::string expression){
                 m_operation = Multiplication;
             }
         }
-        else if (expression[i] == '/')
-        {
+        else if (expression[i] == '/'){
             if (parenthesis_level < operator_level){
                 left_expr += right_expr;
                 right_expr = "";
@@ -58,13 +56,108 @@ Function::Function(std::string expression){
                 m_operation = Division;
             }
         }
-        right_expr += expression[i];
+        if (expression[i] != ' '){
+            right_expr += expression[i];
+        }
+    }
+    if (left_expr.size() > 0){
+        while(left_expr[0] == '('){
+            left_expr.erase(0,1);
+        }
+    }
+    if (right_expr.size() > 0){
+        while(right_expr[right_expr.size() - 1] == ')'){
+            right_expr.pop_back();
+        }
+        if (right_expr[0] == '+' || right_expr[0] == '-' || right_expr[0] == '*' || right_expr[0] == '/' || right_expr[0] == '^'){
+            right_expr.erase(0,1);
+        }
+    }
+    if (right_expr == ""){
+        if (left_expr[0] >= '0' && left_expr[0] <= '9'){
+            m_operation = Constant;
+            for (int i = 0; i < left_expr.size(); i++){
+                if (left_expr[i] >= '0' && left_expr[i] <= '9'){
+                    m_value *= 10;
+                    m_value += left_expr[i] - '0';
+                }
+            }
+        }
+        else {
+            m_operation = Variable;
+            for (int i = 0; i < left_expr.size(); i++){
+                if (left_expr[i] >= 'a' && left_expr[i] <= 'z'){
+                    m_variable += left_expr[i];
+                }
+            }
+            bool var_in_list = false;
+            for (int i = 0; i < variables->size(); i++){
+                if ((*variables)[i] == m_variable){
+                    var_in_list = true;
+                    m_value = i;
+                }
+            }
+            if (!var_in_list){
+                m_value = variables->size();
+                variables->push_back(m_variable);
+            }
+        }
+    }
+    else if (left_expr == ""){
+        if (right_expr[0] >= '0' && right_expr[0] <= '9'){
+            m_operation = Constant;
+            for (int i = 0; i < right_expr.size(); i++){
+                if (right_expr[i] >= '0' && right_expr[i] <= '9'){
+                    m_value *= 10;
+                    m_value += right_expr[i] - '0';
+                }
+            }
+        }
+        else {
+            m_operation = Variable;
+            for (int i = 0; i < right_expr.size(); i++){
+                if (right_expr[i] >= 'a' && right_expr[i] <= 'z'){
+                    m_variable += right_expr[i];
+                }
+            }
+            bool var_in_list = false;
+            for (int i = 0; i < variables->size(); i++){
+                if ((*variables)[i] == m_variable){
+                    var_in_list = true;
+                    m_value = i;
+                }
+            }
+            if (!var_in_list){
+                m_value = variables->size();
+                variables->push_back(m_variable);
+            }
+        }
+    }
+    else {
+        m_right_member = new Function(right_expr, m_variables);
+        m_left_member = new Function(left_expr, m_variables);
     }
 }
 
+Function::Function(std::string expression){
+    m_variables = new std::vector<std::string>;
+    m_var_host = true;
+    Function(expression, m_variables);
+
+    for (int i = 0; i < m_variables->size(); i++){
+        std::cout << "Var " << i << " : " << (*m_variables)[i] << std::endl;
+    }
+}
+
+
 Function::~Function(){
-    delete m_left_member;
-    delete m_right_member;
+    if (m_left_member != nullptr)
+        delete m_left_member;
+    if (m_right_member != nullptr)
+        delete m_right_member;
+    if (m_var_host){
+        delete m_variables;
+    }
 }
 
 float Function::image(std::vector<float> values){
@@ -113,5 +206,7 @@ float Function::image(std::vector<float> values){
             return values[m_value];
             break;
 
+        default :
+            return 0;
     }
 }
