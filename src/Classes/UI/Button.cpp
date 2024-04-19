@@ -3,6 +3,9 @@
 #include "Rectangle.hpp"
 #include "Label.hpp"
 
+int Button::nb_instances = 0;
+Button* Button::instances[20];
+
 Button::Button(int width, int height, int x, int y, const char text[], void (*m_onclick)(), sf::Color color)
     : m_size(width, height), m_position(x, y), color(color),
       rect(width, height, x, y, color, 5),

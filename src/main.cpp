@@ -16,7 +16,7 @@ int main()
 {
     // //sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
     sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Default);
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Works !");
+    // sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Works !");
 
     Function test("(3*x) + y");
     
