@@ -10,12 +10,13 @@ public:
     static int nbInstances();
     static Button* getInstance(int index);
 
-    Button(int width, int height, int x, int y, const char text[], void (*m_onclick)(), sf::Color color);
+    Button(int width, int height, int x, int y, const char text[], void (*onclick)(), sf::Color color);
     ~Button();
 
     void draw(sf::RenderWindow& window);
     sf::Vector2i getPos();
-    void click(int mousex, int mousey);
+    void (*click(int mousex, int mousey))();
+    void update();
 
 protected:
     static int nb_instances;
@@ -24,7 +25,7 @@ protected:
     sf::Vector2i m_size;
     sf::Vector2i m_position;
     char text[20];
-    sf::Color color;  
+    sf::Color m_color;  
     sf::Color calculateTextColor(sf::Color);
     sf::Vector2i cursor;
 
@@ -33,6 +34,8 @@ protected:
     Label label;
     // Function pointer declaration
     void (*m_onclick)();
+    bool clicked = false; 
+    sf::Clock timer;
 };
 
 #endif

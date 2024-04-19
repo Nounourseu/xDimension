@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include "Classes/Classes.hpp"
 
-void testDoNothing() {
-    printf("Clicked");
+void testDoNothing(void) {
+    printf("testDoNothing successfully called\n");
 }
 
 float testFunc(float x) {
@@ -14,6 +14,7 @@ float testFunc(float x) {
 
 int main()
 {
+
     // //sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
     sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Default);
     // sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Works !");
@@ -33,6 +34,7 @@ int main()
     // Label
     Label lab("HelloW", 40, 700, 100, sf::Color::White);
 
+    printf("\nOriginal pointer : %p\n", testDoNothing);
     // Bouton 
     Button but(100, 40, 600, 700, "Appuie stp", testDoNothing, sf::Color(0,0,250));
     Button but1(200, 40, 600, 650, "Appuie stp", testDoNothing, sf::Color(0,0,250));
@@ -53,9 +55,11 @@ int main()
 
     Draw2D fonc_test(xdef, ydef, &testFunc, &window);
 
-
+    int printage = 0;
     while (window.isOpen())
     {
+        printage++;
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -66,12 +70,17 @@ int main()
                     window.close();
                 }
             }
-            if (event.type == sf::Event::MouseLeft) {
-                int mouseX = sf::Mouse::getPosition().x;
-                int mouseY = sf::Mouse::getPosition().y;
-                for (int i=0; i<Button::nbInstances(); i++) {
-                    Button::getInstance(i)->click(mouseX, mouseY);
-                } 
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    int mouseX = event.mouseButton.x;
+                    int mouseY = event.mouseButton.y;
+                    for (int i=0; i<Button::nbInstances(); i++) {
+                        void (*onclickFunction)() = Button::getInstance(i)->click(mouseX, mouseY);
+                        if (onclickFunction!=nullptr) {
+                            onclickFunction();
+                        }
+                        } 
+                    }
             }
         }
 
@@ -80,6 +89,14 @@ int main()
         point.draw(window);
         rect.draw(window);
         lab.draw(window);
+
+        but.update();
+        but1.update();
+        but2.update();
+        but3.update();
+        but4.update();
+        but5.update();
+        otherbut.update();
 
 
         but.draw(window);
@@ -96,6 +113,7 @@ int main()
         fonc_test.draw();
 
         window.display();
+    // if(printage%100==0){printf("\npointer in main.cpp window loop : %p\n", testDoNothing);}
     }
 
     return 0;

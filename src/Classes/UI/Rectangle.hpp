@@ -17,6 +17,9 @@ public :
 
     void draw(sf::RenderWindow& window);
     void setColor(sf::Color color);
+    void setSize(sf::Vector2f size);
+    sf::Vector2f getSize();
+    sf::Color getColor();
 
 protected:    
     int m_outline;
@@ -24,6 +27,7 @@ protected:
     sf::Vector2f m_size;
     sf::Vector2i m_position;
     sf::Color getOutColor(sf::Color color);
+    sf::Color m_color;
 };
 
 #endif
