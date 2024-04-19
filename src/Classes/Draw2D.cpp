@@ -44,7 +44,7 @@ void Draw2D::draw() {
 
         m_points[i].draw(*m_window); 
         
-        // On trace un segment pour éviter qu'il n'y ai que des points isolés quand la fct est trop verticale
+        // On trace un segment pour éviter qu'il n'y ait que des points isolés quand la fct est trop verticale
         if (abs(new_pos.y - prev_pos.y) > 1) {
             Segment seg(prev_pos.x, prev_pos.y, new_pos.x, new_pos.y, m_color);
             seg.draw(*m_window);
