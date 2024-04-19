@@ -14,9 +14,12 @@ float testFunc(float x) {
 
 int main()
 {
-    // sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
+    // //sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
     sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Default);
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Works !");
 
+    Function test("(3*x) + y");
+    
 
     int width = window.getSize().x;
     int height = window.getSize().y;
@@ -25,7 +28,7 @@ int main()
     TestPoint point(width/2, height/2, 3, sf::Color::Red);
 
     // Rectangle
-    Rectangle rect(100, 200, 300, 300, sf::Color(0,150,0), 10);
+    Rectangle rect(100, 200, 300, 300, sf::Color(0, 150, 0), 10);
 
     // Label
     Label lab("HelloW", 40, 700, 100, sf::Color::White);
