@@ -14,7 +14,8 @@ float testFunc(float x) {
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
+    // sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Fullscreen);
+    sf::RenderWindow window(sf::VideoMode::getFullscreenModes()[0], "SFML Works !", sf::Style::Default);
 
 
     int width = window.getSize().x;
@@ -36,15 +37,15 @@ int main()
     Button but3(600, 40, 600, 550, "Appuie stp", testDoNothing, sf::Color(0,0,250));
     Button but4(800, 40, 600, 500, "Appuie stp", testDoNothing, sf::Color(0,0,250));
     Button but5(1000, 40, 600, 400, "Appuie stp", testDoNothing, sf::Color(0,0,250));
-    unsigned int button_instances = 6;
 
     // Segment
     Segment diag(100,200, 600, 100, sf::Color::Red);
 
+    Button otherbut(600, 200, 600, 100, "other but", testDoNothing, sf::Color(0,0,250));
 
     TestPoint graph[1920];
 
-    std::pair<float, float> xdef = std::make_pair(-10.0f, 10.0f);
+    std::pair<float, float> xdef = std::make_pair(-10.0f, 5.0f);
     std::pair<float, float> ydef = std::make_pair(-10.0f, 10.0f);
 
     Draw2D fonc_test(xdef, ydef, &testFunc, &window);
@@ -65,8 +66,8 @@ int main()
             if (event.type == sf::Event::MouseLeft) {
                 int mouseX = sf::Mouse::getPosition().x;
                 int mouseY = sf::Mouse::getPosition().y;
-                for (int i=0; i<button_instances; i++) {
-                    // je cherche un moyen d'avoir toutes les instances de Button
+                for (int i=0; i<Button::nbInstances(); i++) {
+                    Button::getInstance(i)->click(mouseX, mouseY);
                 } 
             }
         }
@@ -77,12 +78,15 @@ int main()
         rect.draw(window);
         lab.draw(window);
 
+
         but.draw(window);
         but1.draw(window);
         but2.draw(window);
         but3.draw(window);
         but4.draw(window);
         but5.draw(window);
+        otherbut.draw(window);
+
 
         diag.draw(window);
 

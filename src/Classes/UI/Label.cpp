@@ -13,6 +13,7 @@ Label::Label(const char string[], unsigned int characterSize, int x, int y, sf::
     text.setFillColor(color);
     text.setPosition(x, y);
     text.setFont(font);
+    printf("\nL : '%s'\n", string);
 }
 
 Label::~Label() {}
