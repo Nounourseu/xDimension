@@ -7,5 +7,5 @@
 #include "UI/Button.hpp"
 #include "UI/UI.hpp"
 #include "UI/Rectangle.hpp"
-#include "UI/Rectangle.hpp"
 #include "UI/Label.hpp"
+#include "UI/UserInput.hpp"

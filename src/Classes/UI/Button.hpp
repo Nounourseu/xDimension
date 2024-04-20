@@ -14,7 +14,7 @@ public:
     ~Button();
 
     void draw(sf::RenderWindow& window);
-    sf::Vector2i getPos();
+    sf::Vector2f getPos();
     void (*click(int mousex, int mousey))();
     void update();
 
@@ -22,8 +22,8 @@ protected:
     static int nb_instances;
     static Button* instances[20]; //Modifier le max si besoin (20)
 
-    sf::Vector2i m_size;
-    sf::Vector2i m_position;
+    sf::Vector2f m_size;
+    sf::Vector2f m_position;
     char text[20];
     sf::Color m_color;  
     sf::Color calculateTextColor(sf::Color);

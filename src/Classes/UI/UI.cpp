@@ -1,6 +1,7 @@
 #include "UI.hpp"
 
 UI::UI(int type) {
+    // parametres de l'UI
 }
 
 UI::~UI() {};

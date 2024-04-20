@@ -2,7 +2,7 @@
 #define XDMSHAPE_HPP
 
 /*
-Classe mère de tous les trucs qui s'affichent à l'écran. Permet d'avoir une fonction draw commune si on stocke
+Classe mère de tous les trucs qui s'affichent à l'écran. Permet d'avoir une fonction draw commune si on stock
 Plusieurs éléments différents dans un tableau.
 */
 

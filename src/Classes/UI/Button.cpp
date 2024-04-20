@@ -29,7 +29,7 @@ sf::Color Button::calculateTextColor(sf::Color backgroundColor) {
     return (luminance < 1280) ? sf::Color::White : sf::Color::Black;
 }
 
-sf::Vector2i Button::getPos() {
+sf::Vector2f Button::getPos() {
     return m_position;
 }
 
@@ -43,7 +43,19 @@ void (*Button::click(int mousex, int mousey))() {
         clicked = true;
         timer.restart();
 
-        rect.setSize(sf::Vector2f(m_size.x*0.99, m_size.y*0.99));
+        // On peut ajuster les coefs pour rendre ça plus joli
+        float relative_reduction = 0.001;
+        float absolute_reduction = 4;
+
+        rect.setSize(sf::Vector2f(
+            m_size.x*(1-relative_reduction)-absolute_reduction,
+            m_size.y*(1-relative_reduction)-absolute_reduction
+            ));
+
+        rect.setPosition(sf::Vector2f(
+            m_position.x + (m_size.x*relative_reduction + absolute_reduction)/2,
+            m_position.y + (m_size.y*relative_reduction + absolute_reduction)/2
+            ));
         
         int darker = 30;
         int rgb[] = {m_color.r, m_color.g, m_color.b};
@@ -79,6 +91,7 @@ void Button::update() {
     if (clicked) {
         if (timer.getElapsedTime().asSeconds() > 0.2) {
             rect.setSize(sf::Vector2f(m_size.x, m_size.y)); 
+            rect.setPosition(m_position);
             rect.setColor(m_color);
             clicked = false;
         }

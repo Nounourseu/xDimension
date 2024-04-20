@@ -2,8 +2,9 @@
 #define XDMSEGMENT_HPP
 
 #include <SFML/Graphics.hpp>
+#include "UI/Shape.hpp"
 
-class Segment {
+class Segment : public Shape {
 public:
     Segment(int xA, int yA, int xB, int yB, sf::Color color = sf::Color::White);
     ~Segment();
