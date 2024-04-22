@@ -2,17 +2,19 @@
 #define DRAW2D_HPP
 #include <SFML/Graphics.hpp>
 #include "TestPoint.hpp"
+#include "Function.hpp"
+#include "Ftest.hpp"
 
 class Draw2D {
     public:
-        Draw2D(std::pair<float, float>& xdef, std::pair<float, float>& ydef, float (*func)(float x), sf::RenderWindow* window, sf::Color color = sf::Color::Red);
+        Draw2D(std::pair<float, float>& xdef, std::pair<float, float>& ydef, Ftest* func, sf::RenderWindow* window, sf::Color color = sf::Color::Red);
         ~Draw2D();
         void draw();
 
     protected:
         std::pair<float, float>& m_xdef;
         std::pair<float, float>& m_ydef;
-        float (*m_func)(float x); 
+        Ftest* m_func; 
         TestPoint m_points[1920];
         float m_pas;
         float m_ratio;

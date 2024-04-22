@@ -4,14 +4,14 @@
 #include <stdlib.h>
 
 
-Draw2D::Draw2D(std::pair<float, float>& xdef, std::pair<float, float>& ydef, float (*func)(float x), sf::RenderWindow* window, sf::Color color)
+Draw2D::Draw2D(std::pair<float, float>& xdef, std::pair<float, float>& ydef, Ftest* func, sf::RenderWindow* window, sf::Color color)
 : m_xdef(xdef), m_ydef(ydef), m_func(func), m_window(window), m_color(color) {
     m_winsize = m_window->getSize();
     m_pas = (xdef.second-xdef.first)/m_winsize.x;
     m_ratio = (ydef.second-ydef.first)/m_winsize.y;
 
     for (int i=0; i<m_winsize.x; i++) {
-        m_points[i].rebuild(i, m_winsize.y - (func(i*m_pas+m_xdef.first)-m_ydef.first)/m_ratio, 2, m_color);
+        m_points[i].rebuild(i, m_winsize.y - ((*func).image({i*m_pas+m_xdef.first})-m_ydef.first)/m_ratio, 2, m_color);
     }
 
 }

@@ -16,6 +16,9 @@ public:
     // blinking cursor
     void update();
 
+    void setSize(sf::Vector2f size);
+    void setPosition(sf::Vector2f pos);
+
 protected:
     Rectangle input_bar;
     sf::Text text;
